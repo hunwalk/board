@@ -2,8 +2,6 @@
     <a href="https://github.com/hunwalk/board" target="_blank">
         <img src="web/images/logo.png" width="200px">
     </a>
-    <h1 align="center">BoarD</h1>
-    <br>
 </p>
 
 A simple alert board for self-host enthusiasts, startups, ...etc.
