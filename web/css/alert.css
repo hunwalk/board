@@ -1,0 +1,47 @@
+.board-alert{
+    display: flex;
+    align-items: center;
+    min-width: 300px;
+    margin-bottom: 20px;
+}
+
+.alert-sub{
+    margin-right: 25px;
+}
+
+.alert-main{
+    border-left: 2px solid grey;
+    padding-left: 25px;
+    margin-right: 25px;
+}
+
+.alert-main a{
+    text-decoration: none;
+    color: #000000;
+}
+
+.alert-main h1{
+    font-family: Montserrat, 'sans-serif';
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.alert-main span.alert-date{
+    font-family: Montserrat, 'sans-serif';
+    font-size: 14px;
+    color: #B1B1B1;
+}
+
+.alert-sub img{
+    width: 70px;
+}
+
+.keyword-container{
+    display: flex;
+}
+
+.action-container{
+    padding-top: 10px;
+    border-top: 1px solid grey;
+    margin-top: 10px;
+}
