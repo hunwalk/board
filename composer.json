@@ -20,7 +20,8 @@
     "issues": "https://github.com/HunWalk/board/issues?state=open",
     "source": "https://github.com/HunWalk/board"
   },
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "require": {
     "ext-json": "*",
     "php": ">=7.1.0",
