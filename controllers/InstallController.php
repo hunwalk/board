@@ -3,70 +3,78 @@
 namespace app\controllers;
 
 use app\models\ConfigureForm;
+use app\models\user\RegistrationForm;
 use Yii;
-use yii\console\controllers\MigrateController;
+use yii\base\Event;
+use yii\base\InvalidConfigException;
+use yii\base\InvalidRouteException;
+use yii\console\Exception;
+use yii\web\BadRequestHttpException;
 use yii\web\Controller;
+use yii\web\HttpException;
+use yii\web\Response;
 
+/**
+ * Class InstallController
+ * @package app\controllers
+ */
 class InstallController extends Controller
 {
+    /**
+     * @var string
+     */
     public $defaultAction = 'prompt';
 
+    /**
+     * Just a regular ass view, where I placed an Install button
+     * @return string
+     */
     public function actionPrompt()
     {
         return $this->render('prompt');
     }
 
+    /**
+     * This is where we ask for the db info
+     * @return string|Response
+     */
     public function actionConfigure()
     {
         $model = new ConfigureForm();
 
-        if ($model->load(\Yii::$app->request->post())){
+        if ($model->load(Yii::$app->request->post())) {
 
-            $output = $this->renderPartial('env_template',[
+            $output = $this->renderPartial('env_template', [
                 'params' => $model->attributes
             ]);
 
-            if (file_put_contents(\Yii::getAlias('@app/.env'),$output)){
+            if (file_put_contents(Yii::getAlias('@app/.env'), $output)) {
                 return $this->redirect('/install/install');
             }
         }
-        return $this->render('configure',[
+        return $this->render('configure', [
             'model' => $model
         ]);
     }
 
+    /**
+     * @return Response
+     * @throws Exception
+     * @throws InvalidConfigException
+     * @throws InvalidRouteException
+     */
     public function actionInstall()
     {
-        $oldApp = \Yii::$app;
-        // Load Console Application config
-        $config = require \Yii::getAlias('@app'). '/config/console.php';
-        new \yii\console\Application($config);
 
-        $result = \Yii::$app->runAction('migrate-user', ['migrationPath' => '@vendor/dektrium/yii2-user/migrations', 'interactive' => false]);
-        \Yii::$app = $oldApp;
+        if (!Yii::$app->installer->dbOk) {
+            Yii::$app->session->setFlash('danger', 'We could not connect to the database.');
+            return $this->redirect('/install/configure');
+        }
 
-        dump($result);
-        exit;
-    }
+        ob_start();
+        Yii::$app->installer->install();
+        ob_end_clean();
 
-    /**
-     * TODO: delete this, when installer is finished
-     * @throws \yii\base\InvalidConfigException
-     * @throws \yii\base\InvalidRouteException
-     * @throws \yii\console\Exception
-     */
-    public function actionTest()
-    {
-        if(!defined('STDIN'))  define('STDIN',  fopen('php://stdin',  'rb'));
-        if(!defined('STDOUT')) define('STDOUT', fopen('php://stdout', 'wb'));
-        if(!defined('STDERR')) define('STDERR', fopen('php://stderr', 'wb'));
-
-        /** @var MigrateController $migrateController */
-        $migrateController = Yii::createObject('yii\console\controllers\MigrateController',['migrate-user',$this]);
-        $migrateController->migrationPath = '@vendor/dektrium/yii2-user/migrations';
-
-        $result = $migrateController->runAction('up',['interactive' => 0]);
-        dump($result);
-        exit;
+        return $this->redirect('/user/register');
     }
 }

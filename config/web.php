@@ -25,6 +25,7 @@ $config = [
                 'RegistrationForm' => 'app\models\user\RegistrationForm',
             ],
             'admins' => ['admin'],
+            'enableConfirmation' => false
         ],
         'rbac' => 'dektrium\rbac\RbacWebModule',
         'api' => [
