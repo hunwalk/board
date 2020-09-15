@@ -10,7 +10,8 @@ $config = [
     'timezone' => 'Europe/Bratislava',
     'basePath' => dirname(__DIR__),
     'bootstrap' => [
-        'log','app\Bootstrap',
+        'log',
+        'app\Bootstrap'
     ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -36,6 +37,7 @@ $config = [
         ],
     ],
     'components' => [
+        'installer' => 'app\services\InstallerService',
         'formatter' => [
           'defaultTimeZone' => 'Europe/Bratislava'
         ],
