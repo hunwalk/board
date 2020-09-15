@@ -16,6 +16,10 @@ template I created that you can find here: https://github.com/hunwalk/yii2-basic
 Also the logo uses an icon I downloaded from here:
 https://www.flaticon.com/free-icon/wild-boar_427417
 
+Btw, this project looks something like this:
+
+![screenshot](https://i.imgur.com/7dgMv3T.png)
+
  ## Get started | Installation
  > You will need composer for this project.
  You can find it here, as well as some instructions about how to install it:
@@ -37,7 +41,28 @@ $ composer run-script post-create-project-cmd
 >post-create-project-cmd script sets up the permissions for some folders 
 and generates the cookieValidationKey for you
 
-## Get started | Configuration
+## Automatic Install
+> Please note, that this is still in beta, it might not work yet properly.
+> If you've found an error please create an issue on github
+
+#### On a local machine
+Use your favorite terminal and cd into your project.
+
+Then use the command:
+```bash
+php yii serve
+```
+
+And that's it. Open up your browser, head to http://localhost:8080/
+and hit install.
+
+#### On a shared hosting environment.
+Set the vhost's documentRoot to the web folder in this project.
+That's it.
+
+## Manual Configuration
+You can skip this part if you've already used
+the method above.
 
 #### 1st step
 Create a .env file from the .env.example
@@ -65,7 +90,7 @@ Windows
     $ php yii serve
     ```
    
-## Get started | Sending alerts
+## Sending alerts
 
 You have 2 options. The first one is to use the board.js provided inside this project.
 You can find some informations about this on the project page.

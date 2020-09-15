@@ -45,7 +45,9 @@ class Alert extends \yii\db\ActiveRecord
     public function getTypes()
     {
         return [
-            self::TYPE_JSON => 'JSON'
+            self::TYPE_JSON => 'JSON',
+            self::TYPE_HTML => 'HTML',
+            self::TYPE_TEXT => 'Text',
         ];
     }
 

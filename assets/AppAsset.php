@@ -31,7 +31,8 @@ class AppAsset extends AssetBundle
         'css/site.css',
         'css/login.css',
         'css/table.css',
-        'css/alert.css'
+        'css/alert.css',
+        'css/install.css'
     ];
     public $js = [
     ];

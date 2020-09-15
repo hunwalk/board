@@ -20,9 +20,11 @@ $sender = json_decode($model->sender);
     <?= $model->render() ?>
     <p>
         <code><strong>alert_sender</strong></code><br>
+        <?php if ($sender): ?>
         <?php foreach ($sender as $key => $value): ?>
             <code><?= $key ?>: <?= $value ?></code><br>
         <?php endforeach; ?>
+        <?php endif; ?>
     </p>
 
     <p>
