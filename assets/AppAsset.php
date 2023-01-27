@@ -28,13 +28,15 @@ class AppAsset extends AssetBundle
     public $css = [
         'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;900&display=swap',
         'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css',
         'css/site.css',
         'css/login.css',
         'css/table.css',
         'css/alert.css',
-        'css/install.css'
+        'css/install.css',
     ];
     public $js = [
+        'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

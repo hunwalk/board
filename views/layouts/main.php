@@ -36,6 +36,7 @@ AppAsset::register($this);
         <nav>
             <?php if (!Yii::$app->user->isGuest): ?>
                 <a href="/site/index">Main</a>
+                <a href="/site/active">Active mode</a>
                 <a href="/project/index">Projects</a>
                 <a href="/alert/index">Alerts</a>
                 <a href="/keyword/index">Keywords</a>

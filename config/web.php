@@ -10,8 +10,7 @@ $config = [
     'timezone' => 'Europe/Bratislava',
     'basePath' => dirname(__DIR__),
     'bootstrap' => [
-        'log',
-        'app\Bootstrap'
+        'log','app\Bootstrap',
     ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -25,7 +24,6 @@ $config = [
                 'RegistrationForm' => 'app\models\user\RegistrationForm',
             ],
             'admins' => ['admin'],
-            'enableConfirmation' => false
         ],
         'rbac' => 'dektrium\rbac\RbacWebModule',
         'api' => [
@@ -38,7 +36,7 @@ $config = [
         ],
     ],
     'components' => [
-        'installer' => 'app\services\InstallerService',
+        'installer' => \app\services\InstallerService::class,
         'formatter' => [
           'defaultTimeZone' => 'Europe/Bratislava'
         ],
@@ -62,7 +60,7 @@ $config = [
         ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => '',
+            'cookieValidationKey' => 'QPTTX0at9jR-XUtn2DcD-30dBqa1ikMG',
             'parsers' => [
                 'application/json' => 'yii\web\JsonParser',
             ]

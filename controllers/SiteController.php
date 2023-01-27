@@ -55,6 +55,19 @@ class SiteController extends Controller
         ];
     }
 
+    public function actionActive($keyword = null)
+    {
+        $searchModel = new AlertSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->query->orderBy(['created_at' => SORT_DESC]);
+
+        return $this->render('active', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'keyword' => $keyword
+        ]);
+    }
+
     /**
      * Displays homepage.
      *

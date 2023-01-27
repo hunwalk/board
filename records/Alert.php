@@ -92,6 +92,12 @@ class Alert extends \yii\db\ActiveRecord
         ]);
     }
 
+    public function activeRender(){
+        return Yii::$app->view->render('@app/views/alert/_active',[
+            'model' => $this
+        ]);
+    }
+
     public function getProject()
     {
         return $this->hasOne(Project::class, ['id' => 'project_id']);
